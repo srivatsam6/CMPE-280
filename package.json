@@ -1,0 +1,23 @@
+{
+  "name": "meanapplication",
+  "version": "1.0.0",
+  "description": "cmpe280assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "Srivatsa Mulpuri",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  }
+}

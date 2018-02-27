@@ -32,6 +32,16 @@
                 return false;
             }
         }
+        else if($(input).attr('type') == 'username' ){
+          if($(input).val().trim()!="studywise"){
+            return false;
+          }
+        }
+        else if($(input).attr('type') == 'password' ){
+          if($(input).val().trim()!="1234"){
+            return false;
+          }
+        }
         else {
             if($(input).val().trim() == ''){
                 return false;
@@ -50,7 +60,7 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
+
+
 
 })(jQuery);

@@ -28,17 +28,18 @@
 
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+          console.log($(input).val().trim().match(/^.+@.+\..{2,4}$/));
+            if(!($(input).val().trim().match(/^.+@.+\..{2,4}$/))) {
                 return false;
             }
         }
         else if($(input).attr('type') == 'username' ){
-          if($(input).val().trim()!="studywise"){
+          if($(input).val().trim()!="studywise@gmail.com"){
             return false;
           }
         }
         else if($(input).attr('type') == 'password' ){
-          if($(input).val().trim()!="1234"){
+          if($(input).val().trim()!="123456789"){
             return false;
           }
         }

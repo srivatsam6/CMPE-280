@@ -1,11 +1,15 @@
 $(init);
 
 var request;
+
+
 function init()
 {
   $("#sortable").sortable();
   $(".draggable").draggable();
-
+  $( ".resizable" ).resizable({
+        handles: "se"
+      });
 }
 
 function dash(menuitem, event) {

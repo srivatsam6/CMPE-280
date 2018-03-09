@@ -35,6 +35,11 @@ router.get('/rising',(req,res,next) => {
 
 });
 
+router.get('/courses',(req,res,next) => {
+  console.log("courses");
+  res.sendFile(path.join(__dirname, '../', 'views', 'courses.html'));
+
+});
 
 router.get('/registerpage',(req,res,next) => {
 //  res.sendFile('login.html', {root: __dirname + '\\views'});

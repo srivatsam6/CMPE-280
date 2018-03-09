@@ -4,10 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Registration Form</title>
-
-
-
+      <link rel="stylesheet" type="text/css" href="../css/tooltip.css">
       <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+    $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });
+
+  </script>
 
 
 </head>
@@ -35,9 +55,10 @@
 		</p>
 		<p>
 			<label for="password" class="floatLabel">Password</label>
-			<input id="password" name="password" type="password">
+			<input id="password" name="password" type="password" title="Password should be more than 8 characters.">
 			<span>Enter a password longer than 8 characters</span>
 		</p>
+
 		<p>
 			<label for="confirm_password" class="floatLabel">Confirm Password</label>
 			<input id="confirm_password" name="confirm_password" type="password">

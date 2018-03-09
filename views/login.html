@@ -8,15 +8,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="../css/forum.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/js/drag.js"></script>
+  <script src="/vendor/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 <body>
 
   <nav class="navbar is-white topNav">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="../">
+        <a class="navbar-item" href="">
             <h1><b>STUDYWISE</b></h1>
         </a>
         <div class="navbar-burger burger" data-target="topNav">
@@ -28,12 +37,12 @@
 
       <div id="topNav" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="forum.html">
+          <a class="navbar-item" href onclick = "return dash('dashboard',event);">
             Home
           </a>
         </div>
 
-        <div class="navbar-end">
+      <!--  <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
@@ -56,7 +65,7 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </nav>
@@ -64,9 +73,9 @@
     <div class="container">
       <div class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item is-active" href="#">Popular</a>
-          <a class="navbar-item" href="#">Recent</a>
-          <a class="navbar-item" href="#">Rising</a>
+          <a class="navbar-item is-active" href onclick = "return dash('dashboard',event);" >Popular</a>
+          <a class="navbar-item" href onclick = "return dash('recent',event);">Recent</a>
+          <a class="navbar-item" href onclick = "return dash('rising',event);">Rising</a>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -84,145 +93,36 @@
           <p class="menu-label">
             Tags
           </p>
-          <ul class="menu-list">
-            <li><a>Dashboard</a></li>
-            <li><a>Courses</a></li>
-            <li><a>Manage Posts</a></li>
-            <li><a>Manage Answers</a></li>
+          <ul class="menu-list" id = "sortable">
+            <li><a href onclick = "return dash('dashboard',event);" >Dashboard</a></li>
+            <li><a href onclick = "return dash('Courses',event);" >Courses</a></li>
+            <li><a href onclick = "return dash('Posts',event);">Manage Posts</a></li>
+            <li><a href onclick = "return dash('Answers',event);">Manage Answers</a></li>
           </ul>
         </aside>
 
       </div>
 
       <div class="column is-9">
-        <div class="box content">
-          <article class="post">
-            <h4>Bulma: How do you center a button in a box?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@jsmith</a> replied 34 minutes ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-            <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
-            </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How can I make a bulma button go full width?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@red</a> replied 40 minutes ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>TypeError: Data must be a string or a buffer when trying touse vue-bulma-tabs</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@jsmith</a> replied 53 minutes ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 13</span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How to vertically center elements in Bulma?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@brown</a> replied 3 hours ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>I'm trying to use hamburger menu on bulma css, but it doesn't work. What is wrong?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@hamburgler</a> replied 5 hours ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h4>How to make tiles wrap with Bulma CSS?</h4>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-32x32">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href="#">@rapper</a> replied 3 hours ago  &nbsp;
-                    <span class="tag">Question</span>
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-               <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-              </div>
-            </div>
-          </article>
+        <div class="box content" id ="artcl">
+          <table>
 
+          <td >
+          <div class="column is-4">
+          <a class="button is-primary is-block is-alt is-large draggable" href="#">CMPE 202</a>
+          <a class="button is-primary is-block is-alt is-large draggable" href="#">CMPE 272</a>
+          <a class="button is-primary is-block is-alt is-large draggable" href="#">CMPE 257</a>
+        </div>
+      </td>
+      <td>
+        <div class="column is-6">
+          <div id="droppable" class="ui-widget-header">
+            <p>Drop here</p>
+          </div>
+        </td>
+
+    </table>
+        </div>
         </div>
       </div>
 
@@ -234,7 +134,7 @@
 
         <p>
 
-          </a>
+
         </p>
       </div>
     </div>

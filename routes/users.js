@@ -17,6 +17,25 @@ router.get('/loginpage',(req,res,next) => {
 
 });
 
+router.get('/Dashboard',(req,res,next) => {
+  console.log("Dashboard");
+  res.sendFile(path.join(__dirname, '../', 'views', 'article.html'));
+
+});
+
+router.get('/recent',(req,res,next) => {
+  console.log("recent");
+  res.sendFile(path.join(__dirname, '../', 'views', 'recent.html'));
+
+});
+
+router.get('/rising',(req,res,next) => {
+  console.log("rising");
+  res.sendFile(path.join(__dirname, '../', 'views', 'rising.html'));
+
+});
+
+
 router.get('/registerpage',(req,res,next) => {
 //  res.sendFile('login.html', {root: __dirname + '\\views'});
   res.sendFile(path.join(__dirname, '../', 'views', 'CreateProfile.html'));

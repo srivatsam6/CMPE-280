@@ -9,8 +9,5 @@ app.config(function($routeProvider) {
     })
     .when("/login", {
         templateUrl : "login.htm"
-    })
-    .when("/blue", {
-        templateUrl : "blue.htm"
     });
 });

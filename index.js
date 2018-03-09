@@ -17,7 +17,7 @@ app.get('/', (req,res) =>{
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'routes/assets')));
+//app.use(express.static(path.join(__dirname, 'routes/assets')));
 app.use(express.static(path.join(__dirname, 'routes/assets')));
 
 app.use('/routes', users);

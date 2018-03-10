@@ -10,6 +10,10 @@ function init()
   $( ".resizable" ).resizable({
         handles: "se"
       });
+  $( ".datepicker" ).datepicker({
+          altField: ".alternate",
+          altFormat: "DD, d MM, yy"
+        });
 }
 
 function dash(menuitem, event) {

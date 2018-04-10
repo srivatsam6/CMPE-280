@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 var path = require('path');
-const Users = require('../model/usersModel')
+const Users = require('../models/usersModel');
+var session = require('express-session');
+var sess;
 
 
 router.get('/register',(req,res,next) => {
@@ -14,6 +16,7 @@ router.get('/login',(req,res,next) => {
 
 router.get('/createUser', (req, res, next) => {
     console.log('Trying to register!');
+    sess=req.session;
 
     const users = new Users({
         firstName: req.query.firstName,
@@ -24,26 +27,38 @@ router.get('/createUser', (req, res, next) => {
     });
 
     users.save();
+    req.session['username'] = req.param('username');
     res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
 
 });
 
 router.get('/loginpage', (req, res, next) =>{
+  sess = req.session;
+  console.log(sess.username);
+  Users.findOne({ 'Email': req.param('username') }, function (err, user) {
+      if (err) return handleError(err);
+      if(user==null){
+          res.sendFile(path.join(__dirname, '../', 'index.html'));
+      }
+      else {
+          req.session['username'] = req.param('username');
+          console.log(user.firstName);
+          res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+      }
+  });
 
-    console.log("this is email")
-    console.log(req.param('username'));
-
-    const user = Users.find({
-        Email: req.param('username')
-    });
-
-    console.log(user.query);
-
-    // console.log(user)
-
-        res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
 });
 
+router.get('/admin_listusers',(req,res,next) => {
+    console.log("Admin clicked on view users");
+
+    Users.find({  }, {}, function (err, user) {
+        console.log(user);
+        if(user!=null) {
+            res.render('admin_listusers', {users: user});
+        }
+    });
+});
 // router.get('/loginpage',(req,res,next) => {
 // //  res.sendFile('login.html', {root: __dirname + '\\views'});
 //   console.log(path.join(__dirname, '../', 'views', 'login.html'));
@@ -53,12 +68,16 @@ router.get('/loginpage', (req, res, next) =>{
 
 router.get('/Dashboard',(req,res,next) => {
   console.log("Dashboard");
+  sess = req.session;
+  console.log(sess.username);
   res.sendFile(path.join(__dirname, '../', 'views', 'article.html'));
 
 });
 
 router.get('/recent',(req,res,next) => {
   console.log("recent");
+  sess = req.session;
+  console.log(sess.username);
   res.sendFile(path.join(__dirname, '../', 'views', 'recent.html'));
 
 });
@@ -71,6 +90,8 @@ router.get('/rising',(req,res,next) => {
 
 router.get('/courses',(req,res,next) => {
   console.log("courses");
+  sess = req.session;
+  console.log(sess.username);
   res.sendFile(path.join(__dirname, '../', 'views', 'courses.html'));
 
 });
@@ -78,6 +99,14 @@ router.get('/courses',(req,res,next) => {
 router.get('/registerpage',(req,res,next) => {
 //  res.sendFile('login.html', {root: __dirname + '\\views'});
   res.sendFile(path.join(__dirname, '../', 'views', 'CreateProfile.html'));
+
+});
+
+router.get('/editProfile',(req,res,next) => {
+//  res.sendFile('login.html', {root: __dirname + '\\views'});
+  sess = req.session;
+  console.log('editProfile:'+sess.username);
+  res.render(path.join(__dirname, '../', 'views', 'editProfile'));
 
 });
 

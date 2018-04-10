@@ -34,14 +34,14 @@
             }
         }
         else if($(input).attr('type') == 'username' ){
-          if($(input).val().trim()!="studywise@gmail.com"){
-            return false;
-          }
+          //if($(input).val().trim()!="studywise@gmail.com"){
+          //  return false;
+        //  }
         }
         else if($(input).attr('type') == 'password' ){
-          if($(input).val().trim()!="123456789"){
-            return false;
-          }
+        //  if($(input).val().trim()!="123456789"){
+          //  return false;
+          //}
         }
         else {
             if($(input).val().trim() == ''){

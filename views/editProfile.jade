@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Selectmenu - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css" rel="stylesheet">
+  <style>
+    fieldset {
+      border: 0;
+    }
+    label {
+      display: block;
+      margin: 30px 0 0 0;
+    }
+    .overflow {
+      height: 200px;
+    }
+    .course {
+       width:150px;
+       height: 30px;
+       margin-right: 5px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( ".course" ).selectmenu();
+
+    $( "#files" ).selectmenu();
+
+    $( "#number" )
+      .selectmenu()
+      .selectmenu( "menuWidget" )
+        .addClass( "overflow" );
+
+    $( "#salutation" ).selectmenu();
+  } );
+  </script>
+</head>
+<body>
+
+<div class="demo">
+
+<form action="#">
+
+  <fieldset>
+    <h4>Please select a course group to Join</h4>
+    <select class ="course">
+      <option>CMPE 202</option>
+      <option selected="selected">CMPE 280</option>
+      <option>CMPE 272</option>
+      <option>CMPE 285</option>
+      <option>CMPE 287</option>
+      <option>CMPE 257</option>
+      <option>CMPE 281</option>
+      <option>CMPE 273</option>
+    </select>
+
+    <button class="ui-button ui-widget ui-corner-all">
+    Join Course!
+  </button>
+
+  </fieldset>
+
+</form>
+
+</div>
+
+
+</body>
+</html>

@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+var session = require('express-session');
+
 
 const app = express();
-
+app.use(session({secret: 'ssshhhhh'}));
 const users = require('./routes/users')
 
 const port = 3000;
@@ -16,11 +18,14 @@ app.get('/', (req,res) =>{
 });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 //app.use(express.static(path.join(__dirname, 'routes/assets')));
 app.use(express.static(path.join(__dirname, 'routes/assets')));
 
 app.use('/routes', users);
+app.set('view engine', 'jade');
 
 app.listen(port, () => {
   console.log('server started on port '+port);

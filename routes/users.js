@@ -49,6 +49,37 @@ router.get('/loginpage', (req, res, next) =>{
 
 });
 
+
+router.get('/editProfile', (req, res, next) =>{
+  sess = req.session;
+  console.log(sess.username);
+  Users.findOne({ 'Email': sess.username }, function (err, user) {
+    console.log(user);
+    if(user!=null) {
+        res.render('editProfile', {users: user});
+    }
+  });
+
+});
+
+router.get('/update', (req, res, next) =>{
+  sess = req.session;
+  console.log(sess.username);
+  Users.findOneAndUpdate({ 'Email': sess.username }, { $set: { firstName: req.param('firstname'), lastName: req.param('lastname') , Email: req.param('email')}}, function (err, user) {
+    console.log(user);
+    if(user!=null) {
+      Users.findOne({ 'Email': sess.username }, function (err, user) {
+        console.log(user);
+        if(user!=null) {
+            res.render('editProfile', {users: user});
+        }
+      });
+    }
+  });
+
+});
+
+
 router.get('/admin_listusers',(req,res,next) => {
     console.log("Admin clicked on view users");
 
@@ -102,11 +133,11 @@ router.get('/registerpage',(req,res,next) => {
 
 });
 
-router.get('/editProfile',(req,res,next) => {
+router.get('/editProfile1',(req,res,next) => {
 //  res.sendFile('login.html', {root: __dirname + '\\views'});
   sess = req.session;
   console.log('editProfile:'+sess.username);
-  res.render(path.join(__dirname, '../', 'views', 'editProfile'));
+  res.sendFile(path.join(__dirname, '../', 'views', 'editProfile.html'));
 
 });
 

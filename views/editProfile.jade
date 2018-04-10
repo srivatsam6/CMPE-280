@@ -1,74 +1,56 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Selectmenu - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link href="//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css" rel="stylesheet">
-  <style>
-    fieldset {
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title jQuery UI Selectmenu - Default functionality
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+    link(href='//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css', rel='stylesheet')
+    style.
+      fieldset {
       border: 0;
-    }
-    label {
+      }
+      label {
       display: block;
       margin: 30px 0 0 0;
-    }
-    .overflow {
+      }
+      .overflow {
       height: 200px;
-    }
-    .course {
-       width:150px;
-       height: 30px;
-       margin-right: 5px;
-    }
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( ".course" ).selectmenu();
-
-    $( "#files" ).selectmenu();
-
-    $( "#number" )
+      }
+      .course {
+      width:150px;
+      height: 30px;
+      margin-right: 5px;
+      }
+    script(src='https://code.jquery.com/jquery-1.12.4.js')
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+    script.
+      $( function() {
+      $( ".course" ).selectmenu();
+      $( "#files" ).selectmenu();
+      $( "#number" )
       .selectmenu()
       .selectmenu( "menuWidget" )
-        .addClass( "overflow" );
-
-    $( "#salutation" ).selectmenu();
-  } );
-  </script>
-</head>
-<body>
-
-<div class="demo">
-
-<form action="#">
-
-  <fieldset>
-    <h4>Please select a course group to Join</h4>
-    <select class ="course">
-      <option>CMPE 202</option>
-      <option selected="selected">CMPE 280</option>
-      <option>CMPE 272</option>
-      <option>CMPE 285</option>
-      <option>CMPE 287</option>
-      <option>CMPE 257</option>
-      <option>CMPE 281</option>
-      <option>CMPE 273</option>
-    </select>
-
-    <button class="ui-button ui-widget ui-corner-all">
-    Join Course!
-  </button>
-
-  </fieldset>
-
-</form>
-
-</div>
-
-
-</body>
-</html>
+      .addClass( "overflow" );
+      $( "#salutation" ).selectmenu();
+      } );
+  body
+    .demo
+      form(action='/routes/update')
+        fieldset
+          h4 Please select a course group to Join
+          br
+          h4 First Name
+          input(type='text', name='firstname', value=users.firstName)
+          br
+          br
+          h4 Last Name
+          input(type='text', name='lastname', value=users.lastName)
+          br
+          br
+          h4 Email Id
+          input(type='text', name='email' value=users.Email)
+          br
+          br
+          button.ui-button.ui-widget.ui-corner-all
+            | Update

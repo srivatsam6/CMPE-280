@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 var path = require('path');
+const Users = require('../model/usersModel')
+
 
 router.get('/register',(req,res,next) => {
   res.send('<h1> <center>Congratulations '+req.param('firstName')+'! You have successfully Registered! Team RATS are cooking something special for you! Stay Tuned!</center></h1><center><body><form method="get" action="/"><input type="submit" value="Go Back to Home Page"></form></body></center>');

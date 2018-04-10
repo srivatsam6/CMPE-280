@@ -10,12 +10,44 @@ router.get('/login',(req,res,next) => {
   res.send('<h1> <center>Congratulations '+req.param('firstName')+'! You have successfully Logged In! Team RATS are cooking something special for you! Stay Tuned!</center></h1><center><body><form method="get" action="/"><input type="submit" value="Go Back to Home Page"></form></body></center>');
 });
 
-router.get('/loginpage',(req,res,next) => {
-//  res.sendFile('login.html', {root: __dirname + '\\views'});
-  console.log(path.join(__dirname, '../', 'views', 'login.html'));
-  res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+router.get('/createUser', (req, res, next) => {
+    console.log('Trying to register!');
+
+    const users = new Users({
+        firstName: req.query.firstName,
+        lastName: req.query.lastName,
+        Email: req.query.Email,
+        password: req.query.password,
+        isAdmin: 'false'
+    });
+
+    users.save();
+    res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
 
 });
+
+router.get('/loginpage', (req, res, next) =>{
+
+    console.log("this is email")
+    console.log(req.param('username'));
+
+    const user = Users.find({
+        Email: req.param('username')
+    });
+
+    console.log(user.query);
+
+    // console.log(user)
+
+        res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+});
+
+// router.get('/loginpage',(req,res,next) => {
+// //  res.sendFile('login.html', {root: __dirname + '\\views'});
+//   console.log(path.join(__dirname, '../', 'views', 'login.html'));
+//   res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+
+// });
 
 router.get('/Dashboard',(req,res,next) => {
   console.log("Dashboard");

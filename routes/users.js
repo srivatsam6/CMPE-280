@@ -32,20 +32,26 @@ router.get('/createUser', (req, res, next) => {
 
 });
 
+
 router.get('/loginpage', (req, res, next) =>{
-  sess = req.session;
-  console.log(sess.username);
-  Users.findOne({ 'Email': req.param('username') }, function (err, user) {
-      if (err) return handleError(err);
-      if(user==null){
-          res.sendFile(path.join(__dirname, '../', 'index.html'));
-      }
-      else {
-          req.session['username'] = req.param('username');
-          console.log(user.firstName);
-          res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
-      }
-  });
+
+    sess = req.session;
+    console.log(sess.username);
+    Users.findOne({ 'Email': req.param('username') }, function (err, user) {
+        if (err) return handleError(err);
+        if(user==null){
+            res.sendFile(path.join(__dirname, '../', 'index.html'));
+        }
+        else {
+            // console.log(user.firstName);
+            if(user.isAdmin=='true' || user.isAdmin==true){
+                res.sendFile(path.join(__dirname, '../', 'views', 'admin.html'));
+            }
+            else {
+                res.sendFile(path.join(__dirname, '../', 'views', 'login.html'));
+            }
+        }
+    });
 
 });
 

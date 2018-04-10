@@ -25,3 +25,14 @@ app.use('/routes', users);
 app.listen(port, () => {
   console.log('server started on port '+port);
 });
+
+const dbConfig = require('./config/database.config.js');
+
+// Connecting to the database
+mongoose.connect(dbConfig.url)
+    .then(() => {
+        console.log("Successfully connected to the database");
+    }).catch(err => {
+    console.log('Could not connect to the database. Exiting now...');
+    process.exit();
+});

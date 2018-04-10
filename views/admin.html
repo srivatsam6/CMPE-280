@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="../css/forum.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/js/drag.js"></script>
+  <script src="/vendor/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+  <nav class="navbar is-white topNav">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="">
+            <h1><b>STUDYWISE</b></h1>
+        </a>
+        <div class="navbar-burger burger" data-target="topNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="topNav" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href onclick = "#">
+            Home
+          </a>
+        </div>
+
+      <!--  <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button is-small">
+                  <span class="icon">
+                    <i class="fa fa-user-plus"></i>
+                  </span>
+                  <span>
+                    Register
+                  </span>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button is-small is-info is-outlined">
+                  <span class="icon">
+                    <i class="fa fa-user"></i>
+                  </span>
+                  <span>Login</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar is-white">
+    <div class="container">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item is-active" href onclick = "#" >Popular</a>
+          <a class="navbar-item" href onclick = "return dash('recent',event);">Recent</a>
+          <a class="navbar-item" href onclick = "return dash('rising',event);">Rising</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <input class="input" type="text" placeholder="Search ...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <a class="button is-primary is-block is-alt is-large" href="#">New Post</a>
+        <aside class="menu">
+          <p class="menu-label">
+            Tags
+          </p>
+          <ul class="menu-list" id = "sortable">
+            <li><a href onclick = "#" >Dashboard</a></li>
+            <li><a href onclick = "return dash('admin_listusers',event);" >List Users</a></li>
+            
+            <li><a href onclick = "return dash('admin_deleteusers',event);">Manage Users</a></li>
+
+             <!-- <li><a href onclick = "return dash('Answers',event);">Manage Answers</a></li>-->
+          </ul>
+        </aside>
+
+      </div>
+
+      <div class="column is-9">
+        <div class="box content" id ="artcl">
+
+
+
+            <article class="post">
+              <h4>How to build a regression model?</h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@jsmith</a> replied 34 minutes ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+              <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+              </div>
+              </div>
+            </article>
+            <article class="post">
+              <h4>Can anyone explain what is normalization? I need to understand it for an assignment.</h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@red</a> replied 40 minutes ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+                <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
+                </div>
+              </div>
+            </article>
+            <article class="post">
+              <h4>What is LSTM ?I have been breaking my head to understand the architecture. Any simple explanation? </h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@jsmith</a> replied 53 minutes ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+                <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 13</span>
+                </div>
+              </div>
+            </article>
+            <article class="post">
+              <h4>What is dimensionality reduction? Examples would be appreciated. TIA. :)</h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@brown</a> replied 3 hours ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+                <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                </div>
+              </div>
+            </article>
+            <article class="post">
+              <h4>I have changed the number of layers in neural network , but it doesn't improve accuracy. What is wrong?</h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@hamburgler</a> replied 5 hours ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+                <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                </div>
+              </div>
+            </article>
+            <article class="post">
+              <h4>Is anyone willing to explain what happened in last class? I was down with the flu. We can book a library room :) </h4>
+              <div class="media">
+                <div class="media-left">
+                  <p class="image is-32x32">
+                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <a href="#">@rapper</a> replied 3 hours ago  &nbsp;
+                      <span class="tag">Question</span>
+                    </p>
+                    <textarea class="resizable" rows="5" cols="20"></textarea>
+                  </div>
+                </div>
+                <div class="media-right">
+                 <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                </div>
+              </div>
+            </article>
+
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+
+        <p>
+
+
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script async type="text/javascript" src="../js/bulma.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title User Display
+        body
+            -var subjectLists = subjects
+            div
+                table.table.table-hover
+                    thead
+                        tr: th Subjects
+                    tbody
+                        each sub in subjectLists
+                            tr
+                                td=sub.id
+                                td=sub.name
+
+

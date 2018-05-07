@@ -4,34 +4,44 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
-var session = require('express-session');
-
 
 const app = express();
-app.use(session({secret: 'ssshhhhh'}));
+
 const users = require('./routes/users')
 
 const port = 3000;
 
+var session = require('express-session');
+
 app.get('/', (req,res) =>{
-  res.sendFile(__dirname + "/index.html")
+
+
+        res.sendFile(__dirname + "/index.html")
+
 });
+
+app.use(session({secret: '#1265872829-89ba;klvhjefhir'}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 
 //app.use(express.static(path.join(__dirname, 'routes/assets')));
 app.use(express.static(path.join(__dirname, 'routes/assets')));
 
 app.use('/routes', users);
+
+//View engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.listen(port, () => {
   console.log('server started on port '+port);
 });
 
+
 const dbConfig = require('./config/database.config.js');
+
+mongoose.Promise = global.Promise;
 
 // Connecting to the database
 mongoose.connect(dbConfig.url)
